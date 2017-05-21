@@ -1,0 +1,2 @@
+# inface
+Class entity interface.
