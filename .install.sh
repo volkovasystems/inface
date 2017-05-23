@@ -3,10 +3,12 @@ babel-runtime \
 diatom \
 falzy \
 heredito \
+methon \
 portel \
 protype \
 transpher \
 transym \
+vound \
 wauker \
 --save && \
 yarn add \
@@ -21,10 +23,12 @@ bower install \
 diatom \
 falzy \
 heredito \
+methon \
 portel \
 protype \
 transpher \
 transym \
+vound \
 wauker \
 --save \
 --force-latest

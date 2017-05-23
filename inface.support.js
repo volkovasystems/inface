@@ -50,10 +50,12 @@
               			"diatom": "diatom",
               			"falzy": "falzy",
               			"heredito": "heredito",
+              			"methon": "methon",
               			"portel": "portel",
               			"protype": "protype",
               			"transpher": "transpher",
               			"transym": "transym",
+              			"vound": "vound",
               			"wauker": "wauker"
               		}
               	@end-include
@@ -62,10 +64,12 @@
 var diatom = require("diatom");
 var falzy = require("falzy");
 var heredito = require("heredito");
+var methon = require("methon");
 var portel = require("portel");
 var protype = require("protype");
 var transpher = require("transpher");
 var transym = require("transym");
+var vound = require("vound");
 var wauker = require("wauker");
 
 var inface = function inface(entity, blueprint) {
@@ -89,20 +93,24 @@ var inface = function inface(entity, blueprint) {
 		throw new Error("invalid blueprint");
 	}
 
-	entity = portel(entity);
+	var instance = portel(entity);
 
 	if (protype(blueprint, STRING)) {
-		blueprint = wauker(entity).
+		blueprint = wauker(instance).
 		filter(function (constructor) {return constructor.name === blueprint;}).
 		pop();
 	}
 
-	var delegate = heredito(entity.constructor, blueprint)();
+	var delegate = heredito(instance.constructor, blueprint)();
 
-	transpher(entity, delegate);
-	transym(entity, delegate);
+	transpher(instance, delegate);
+	transym(instance, delegate);
 
-	return delegate;
+	return methon(delegate).reduce(function (delegate, method) {
+		delegate[method] = vound(delegate[method], entity);
+
+		return delegate;
+	}, delegate);
 };
 
 module.exports = inface;

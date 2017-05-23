@@ -1,6 +1,6 @@
 {
   "name": "inface",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Class entity interface.",
   "main": "inface.deploy.js",
   "support": "inface.support.js",
@@ -22,17 +22,16 @@
     "test",
     "tests"
   ],
-  "resolutions": {
-    "diatom": "^0.28.0"
-  },
   "dependencies": {
     "diatom": "^0.28.0",
     "falzy": "^0.19.0",
-    "heredito": "^0.28.0",
+    "heredito": "^0.29.0",
+    "methon": "^0.0.0",
     "portel": "^0.3.0",
     "protype": "^0.21.0",
     "transpher": "^0.26.0",
     "transym": "^0.1.0",
+    "vound": "^0.24.0",
     "wauker": "^0.14.0"
   }
 }
