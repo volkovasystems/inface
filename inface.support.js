@@ -50,6 +50,7 @@
               			"diatom": "diatom",
               			"falzy": "falzy",
               			"heredito": "heredito",
+              			"kein": "kein",
               			"methon": "methon",
               			"portel": "portel",
               			"protype": "protype",
@@ -64,6 +65,7 @@
 var diatom = require("diatom");
 var falzy = require("falzy");
 var heredito = require("heredito");
+var kein = require("kein");
 var methon = require("methon");
 var portel = require("portel");
 var protype = require("protype");
@@ -107,7 +109,18 @@ var inface = function inface(entity, blueprint) {
 	transym(instance, delegate);
 
 	return methon(delegate).reduce(function (delegate, method) {
-		delegate[method] = vound(delegate[method], entity);
+		/*;
+                                                             	@note:
+                                                             		It should use the original blueprint prototype method
+                                                             			if the method exists because that is the purpose of this function.
+                                                             	@end-note
+                                                             */
+		if (kein(method, blueprint.prototype)) {
+			delegate[method] = vound(blueprint.prototype[method], entity);
+
+		} else {
+			delegate[method] = vound(delegate[method], entity);
+		}
 
 		return delegate;
 	}, delegate);

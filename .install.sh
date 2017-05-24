@@ -3,6 +3,7 @@ babel-runtime \
 diatom \
 falzy \
 heredito \
+kein \
 methon \
 portel \
 protype \
@@ -23,6 +24,7 @@ bower install \
 diatom \
 falzy \
 heredito \
+kein \
 methon \
 portel \
 protype \

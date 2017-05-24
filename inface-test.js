@@ -16,6 +16,9 @@ class Hi {
 	constructor( value ){
 		this.value = value;
 	}
+	sayHi( ){
+		return false;
+	}
 }
 
 let hi = new Hi( "yeah" );
