@@ -2,11 +2,13 @@ yarn add \
 babel-runtime \
 diatom \
 falzy \
+fname \
 heredito \
 kein \
 methon \
 portel \
 protype \
+pyp \
 transpher \
 transym \
 vound \
@@ -23,11 +25,13 @@ webpack \
 bower install \
 diatom \
 falzy \
+fname \
 heredito \
 kein \
 methon \
 portel \
 protype \
+pyp \
 transpher \
 transym \
 vound \

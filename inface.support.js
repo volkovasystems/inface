@@ -49,11 +49,13 @@
               		{
               			"diatom": "diatom",
               			"falzy": "falzy",
+              			"fname": "fname",
               			"heredito": "heredito",
               			"kein": "kein",
               			"methon": "methon",
               			"portel": "portel",
               			"protype": "protype",
+              			"pyp": "pyp",
               			"transpher": "transpher",
               			"transym": "transym",
               			"vound": "vound",
@@ -64,11 +66,13 @@
 
 var diatom = require("diatom");
 var falzy = require("falzy");
+var fname = require("fname");
 var heredito = require("heredito");
 var kein = require("kein");
 var methon = require("methon");
 var portel = require("portel");
 var protype = require("protype");
+var pyp = require("pyp");
 var transpher = require("transpher");
 var transym = require("transym");
 var vound = require("vound");
@@ -98,9 +102,7 @@ var inface = function inface(entity, blueprint) {
 	var instance = portel(entity);
 
 	if (protype(blueprint, STRING)) {
-		blueprint = wauker(instance).
-		filter(function (constructor) {return constructor.name === blueprint;}).
-		pop();
+		blueprint = pyp(wauker(instance), function (constructor) {return fname(constructor) == blueprint;});
 	}
 
 	var delegate = heredito(instance.constructor, blueprint)();
