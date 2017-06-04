@@ -2,7 +2,7 @@ yarn add \
 babel-runtime \
 diatom \
 falzy \
-fname \
+fnamed \
 heredito \
 kein \
 methon \
@@ -25,7 +25,7 @@ webpack \
 bower install \
 diatom \
 falzy \
-fname \
+fnamed \
 heredito \
 kein \
 methon \

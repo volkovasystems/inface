@@ -49,7 +49,7 @@
 		{
 			"diatom": "diatom",
 			"falzy": "falzy",
-			"fname": "fname",
+			"fnamed": "fnamed",
 			"heredito": "heredito",
 			"kein": "kein",
 			"methon": "methon",
@@ -66,7 +66,7 @@
 
 const diatom = require( "diatom" );
 const falzy = require( "falzy" );
-const fname = require( "fname" );
+const fnamed = require( "fnamed" );
 const heredito = require( "heredito" );
 const kein = require( "kein" );
 const methon = require( "methon" );
@@ -102,7 +102,7 @@ const inface = function inface( entity, blueprint ){
 	let instance = portel( entity );
 
 	if( protype( blueprint, STRING ) ){
-		blueprint = pyp( wauker( instance ), ( constructor ) => ( fname( constructor ) == blueprint ) );
+		blueprint = pyp( wauker( instance ), ( constructor ) => fnamed( constructor, blueprint ) );
 	}
 
 	let delegate = heredito( instance.constructor, blueprint )( );
