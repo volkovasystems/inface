@@ -47,6 +47,7 @@
 
 	@include:
 		{
+			"clazof": "clazof",
 			"diatom": "diatom",
 			"falzy": "falzy",
 			"fnamed": "fnamed",
@@ -64,6 +65,7 @@
 	@end-include
 */
 
+const clazof = require( "clazof" );
 const diatom = require( "diatom" );
 const falzy = require( "falzy" );
 const fnamed = require( "fnamed" );
@@ -105,7 +107,8 @@ const inface = function inface( entity, blueprint ){
 		blueprint = pyp( wauker( instance ), ( constructor ) => fnamed( constructor, blueprint ) );
 	}
 
-	let delegate = heredito( instance.constructor, blueprint )( );
+	let constructor = instance.constructor;
+	let delegate = heredito( constructor, blueprint )( );
 
 	transpher( instance, delegate );
 	transym( instance, delegate );
@@ -113,15 +116,38 @@ const inface = function inface( entity, blueprint ){
 	return methon( delegate ).reduce( ( delegate, method ) => {
 		/*;
 			@note:
-				It should use the original blueprint prototype method
-					if the method exists because that is the purpose of this function.
+				This may pose a serious rare bug in the future.
+
+				The following rules should apply,
+				1. If the instance and the blueprint are related
+					then the context should be the instance.
+				2. If the instance and the blueprint are related
+					and the blueprint owns a specific method then it should use
+					that method instead of the overriden method with the instance as the context.
+				3. If the instance and blueprint are not related
+					then it should prioritize the blueprint prototype method followed
+					by the instance constructor prototype method then
+					other methods will flow to the delegate.
+				4. Following rule 3, for method owned by the instance constructor,
+					the context should be the instance, else it should be the delegate.
 			@end-note
 		*/
-		if( kein( method, blueprint.prototype ) ){
-			delegate[ method ] = vound( blueprint.prototype[ method ], entity );
+		if( clazof( entity, blueprint ) ){
+			if( kein( method, blueprint.prototype ) ){
+				delegate[ method ] = vound( blueprint.prototype[ method ], entity );
+
+			}else{
+				delegate[ method ] = vound( entity[ method ], entity );
+			}
+
+		}else if( kein( method, blueprint.prototype ) ){
+			delegate[ method ] = vound( blueprint.prototype[ method ], delegate );
+
+		}else if( kein( method, constructor.prototype ) ){
+			delegate[ method ] = vound( constructor.prototype[ method ], entity );
 
 		}else{
-			delegate[ method ] = vound( delegate[ method ], entity );
+			delegate[ method ] = vound( delegate[ method ], delegate );
 		}
 
 		return delegate;

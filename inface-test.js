@@ -32,7 +32,41 @@ assert.equal( hello.sayHello( ), "hello", "should be equal" );
 
 assert.equal( hello.value, "yeah", "should be equal" );
 
-assert.equal( hello.sayHi( ) === hi, true, "should be equal" );
+assert.equal( hello.sayHi( ) === hello, true, "should be equal" );
+
+class Hola {
+	constructor( ){ }
+	sayHola( ){
+		return "hola";
+	}
+	sayHey( ){
+		return this;
+	}
+}
+
+class Hey extends Hola {
+	constructor( value ){
+		super( );
+
+		this.value = value;
+	}
+	sayHey( ){
+		return false;
+	}
+}
+
+let hey = new Hey( "yeah" );
+let hola = inface( hey, Hola );
+
+assert.equal( hola instanceof Hey, true, "should be true" );
+
+assert.equal( hola instanceof Hola, true, "should be true" );
+
+assert.equal( hola.sayHola( ), "hola", "should be equal" );
+
+assert.equal( hola.value, "yeah", "should be equal" );
+
+assert.equal( hola.sayHey( ) === hey, true, "should be equal" );
 
 class Orange {
 	constructor( ){

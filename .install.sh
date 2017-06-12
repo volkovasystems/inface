@@ -1,5 +1,6 @@
 yarn add \
 babel-runtime \
+clazof \
 diatom \
 falzy \
 fnamed \
@@ -23,6 +24,7 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
+clazof \
 diatom \
 falzy \
 fnamed \
