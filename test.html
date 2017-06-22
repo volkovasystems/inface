@@ -1,8 +1,119 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./inface.deploy.js">
-		</script>
+		<title>inface unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./inface.deploy.js"></script>
+		<script type="application/javascript" src="./bower_components/diatom/diatom.deploy.js"></script>
+		<script type="application/javascript" src="./bower_components/heredito/heredito.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "inface unit test", function( assert ) {
+
+				class Hello {
+					constructor( ){ }
+					sayHello( ){
+						return "hello";
+					}
+					sayHi( ){
+						return this;
+					}
+				}
+
+				class Hi {
+					constructor( value ){
+						this.value = value;
+					}
+					sayHi( ){
+						return false;
+					}
+				}
+
+				let hi = new Hi( "yeah" );
+				let hello = inface( hi, Hello );
+
+				assert.equal( hello instanceof Hi, true, "should be true" );
+
+				assert.equal( hello instanceof Hello, true, "should be true" );
+
+				assert.equal( hello.sayHello( ), "hello", "should be equal" );
+
+				assert.equal( hello.value, "yeah", "should be equal" );
+
+				assert.equal( hello.sayHi( ) === hello, true, "should be equal" );
+
+				class Hola {
+					constructor( ){ }
+					sayHola( ){
+						return "hola";
+					}
+					sayHey( ){
+						return this;
+					}
+				}
+
+				class Hey extends Hola {
+					constructor( value ){
+						super( );
+
+						this.value = value;
+					}
+					sayHey( ){
+						return false;
+					}
+				}
+
+				let hey = new Hey( "yeah" );
+				let hola = inface( hey, Hola );
+
+				assert.equal( hola instanceof Hey, true, "should be true" );
+
+				assert.equal( hola instanceof Hola, true, "should be true" );
+
+				assert.equal( hola.sayHola( ), "hola", "should be equal" );
+
+				assert.equal( hola.value, "yeah", "should be equal" );
+
+				assert.equal( hola.sayHey( ) === hey, true, "should be equal" );
+
+				class Orange {
+					constructor( ){
+						this.color = "orange";
+					}
+					getColor( ){
+						return "orange";
+					}
+				}
+
+				class Apple extends Orange {
+					constructor( ){
+						super( );
+
+						this.color = "red";
+					}
+					getColor( ){
+						return this.color;
+					}
+				}
+
+				let apple = new Apple( );
+				orange = inface( apple, "Orange" );
+
+				assert.equal( orange instanceof Apple, true, "should be true" );
+
+				assert.equal( orange.getColor( ), "orange", "should be equal" );
+
+			} );
+		</script>
+	</body>
 </html>
