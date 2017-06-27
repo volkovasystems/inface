@@ -26,18 +26,18 @@
   ],
   "dependencies": {
     "clazof": "^0.31.0",
-    "diatom": "^0.31.0",
+    "diatom": "^0.32.0",
     "falzy": "^0.20.0",
     "fnamed": "^0.9.0",
-    "heredito": "^0.36.0",
+    "heredito": "^0.37.0",
     "kein": "^0.26.0",
     "methon": "^0.3.0",
     "portel": "^0.4.0",
     "protype": "^0.22.0",
     "pyp": "^0.2.0",
-    "transpher": "^0.27.0",
-    "transym": "^0.2.0",
-    "vound": "^0.28.0",
+    "transpher": "^0.28.0",
+    "transym": "^0.3.0",
+    "vound": "^0.29.0",
     "wauker": "^0.16.0"
   }
 }
