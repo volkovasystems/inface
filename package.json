@@ -1,6 +1,6 @@
 {
   "name": "inface",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Class entity interface.",
   "main": "inface.js",
   "support": "inface.support.js",
@@ -21,6 +21,10 @@
     "inface"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+    "Vinse Vinalon <vinsevinalon@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/inface/issues"
@@ -28,19 +32,19 @@
   "homepage": "https://github.com/volkovasystems/inface#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "clazof": "^0.30.0",
-    "diatom": "^0.29.0",
+    "clazof": "^0.31.0",
+    "diatom": "^0.32.0",
     "falzy": "^0.20.0",
     "fnamed": "^0.9.0",
-    "heredito": "^0.34.0",
+    "heredito": "^0.37.0",
     "kein": "^0.26.0",
-    "methon": "^0.2.0",
+    "methon": "^0.3.0",
     "portel": "^0.4.0",
     "protype": "^0.22.0",
-    "pyp": "^0.0.0",
-    "transpher": "^0.26.0",
-    "transym": "^0.1.0",
-    "vound": "^0.26.0",
+    "pyp": "^0.2.0",
+    "transpher": "^0.28.0",
+    "transym": "^0.3.0",
+    "vound": "^0.29.0",
     "wauker": "^0.16.0"
   },
   "devDependencies": {
@@ -49,6 +53,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "source-map-loader": "^0.2.1",
-    "webpack": "^2.6.1"
+    "webpack": "^3.0.0"
   }
 }

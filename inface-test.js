@@ -1,5 +1,7 @@
 
 const assert = require( "assert" );
+const diatom = require( "diatom" );
+const heredito = require( "heredito" );
 const inface = require( "./inface.js" );
 
 class Hello {
@@ -94,5 +96,16 @@ orange = inface( apple, "Orange" );
 assert.equal( orange instanceof Apple, true, "should be true" );
 
 assert.equal( orange.getColor( ), "orange", "should be equal" );
+
+
+let Mango = diatom( "Mango" );
+Mango.prototype.getFruit = function getFruit( ){ return "mango"; };
+
+let Avocado = diatom( "Avocado" );
+Avocado.prototype.getFruit = function getFruit( ){ return "avocado"; };
+
+Avocado = heredito( Avocado, Mango );
+
+assert.equal( inface( new Avocado( ), "Mango" ).getFruit( ) == "mango", true, "should be true" );
 
 console.log( "ok" );
